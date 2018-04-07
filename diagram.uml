@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="109.5" y="353.0">Weapon_Skill</node>
+    <node x="309.0" y="97.0">A</node>
+    <node x="217.0" y="97.0">B</node>
+    <node x="0.0" y="97.0">Player</node>
+    <node x="124.0" y="97.0">C</node>
+    <node x="0.0" y="440.0">Weapon</node>
+    <node x="503.0" y="353.0">Events</node>
+    <node x="140.0" y="440.0">W_A</node>
+    <node x="253.0" y="440.0">W_C</node>
+    <node x="366.0" y="440.0">W_B</node>
+    <node x="168.7" y="184.0">Player2</node>
+    <node x="197.5" y="0.0">Skillset</node>
+    <node x="507.0" y="425.0">Main</node>
+    <node x="201.95" y="271.0">Player3</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Player2" target="Player">
+      <point x="-28.0" y="-18.5" />
+      <point x="196.7" y="159.0" />
+      <point x="52.0" y="159.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="B" target="Skillset">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="W_A" target="Weapon_Skill">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="Weapon" target="Weapon_Skill">
+      <point x="-30.0" y="-18.5" />
+      <point x="30.0" y="410.0" />
+      <point x="124.9" y="410.0" />
+      <point x="-61.599999999999994" y="18.5" />
+    </edge>
+    <edge source="C" target="Skillset">
+      <point x="0.0" y="-18.5" />
+      <point x="160.5" y="77.0" />
+      <point x="237.14285714285714" y="77.0" />
+      <point x="-15.857142857142861" y="18.5" />
+    </edge>
+    <edge source="W_B" target="Weapon_Skill">
+      <point x="0.0" y="-18.5" />
+      <point x="412.0" y="410.0" />
+      <point x="248.1" y="410.0" />
+      <point x="61.599999999999994" y="18.5" />
+    </edge>
+    <edge source="Player3" target="Skillset">
+      <point x="28.0" y="-18.5" />
+      <point x="285.95" y="246.0" />
+      <point x="417.25" y="246.0" />
+      <point x="417.25" y="57.0" />
+      <point x="300.57142857142856" y="57.0" />
+      <point x="47.571428571428555" y="18.5" />
+    </edge>
+    <edge source="W_C" target="Weapon_Skill">
+      <point x="0.0" y="-18.5" />
+      <point x="299.5" y="420.0" />
+      <point x="217.3" y="420.0" />
+      <point x="30.80000000000001" y="18.5" />
+    </edge>
+    <edge source="Player3" target="Player2">
+      <point x="-28.0" y="-18.5" />
+      <point x="229.95" y="246.0" />
+      <point x="224.7" y="246.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="Player2" target="Skillset">
+      <point x="28.0" y="-18.5" />
+      <point x="252.7" y="159.0" />
+      <point x="392.5" y="159.0" />
+      <point x="392.5" y="67.0" />
+      <point x="284.7142857142857" y="67.0" />
+      <point x="31.714285714285722" y="18.5" />
+    </edge>
+    <edge source="Player" target="Skillset">
+      <point x="26.0" y="-18.5" />
+      <point x="78.0" y="67.0" />
+      <point x="221.28571428571428" y="67.0" />
+      <point x="-31.714285714285722" y="18.5" />
+    </edge>
+    <edge source="A" target="Skillset">
+      <point x="0.0" y="-18.5" />
+      <point x="345.5" y="77.0" />
+      <point x="268.85714285714283" y="77.0" />
+      <point x="15.857142857142833" y="18.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="305.0" y="279.5" />
+  <SelectedNodes>
+    <node>Main</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
