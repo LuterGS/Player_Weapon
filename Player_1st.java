@@ -1,14 +1,14 @@
 public class Player_1st implements Skill {
 
-    private String name;
-    private int HP;
-    private int MP;
-    private int level;
-    private int exp;
-    private int HP_max;
-    private int MP_max;
-    private int level_max = 30;
-    private int exp_max;
+    protected String name;
+    protected int HP;
+    protected int MP;
+    protected int level;
+    protected int exp;
+    protected int HP_max;
+    protected int MP_max;
+    protected int level_max = 30;
+    protected int exp_max;
     Skill first = null;
 
     public Player_1st(String name){
