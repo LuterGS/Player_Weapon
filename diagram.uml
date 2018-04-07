@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="407.0" y="863.0">Player_3rd</node>
+    <node x="351.75000000000006" y="749.0">Player_2nd</node>
+    <node x="900.3316326530614" y="141.0">Ice</node>
+    <node x="262.0" y="114.0">Attack</node>
+    <node x="617.3316326530614" y="87.0">Weapon</node>
+    <node x="123.00000000000006" y="182.0">Defense</node>
+    <node x="0.0" y="182.0">Utility</node>
+    <node x="289.3316326530614" y="0.0">Skill</node>
+    <node x="683.4871794871796" y="485.76923076923083">Events</node>
+    <node x="1002.3316326530614" y="141.0">Dark</node>
+    <node x="218.72448979591843" y="337.0">Player_1st</node>
+    <node x="1117.3316326530614" y="141.0">Fire</node>
+    <node x="689.7435897435896" y="404.1025641025641">Main</node>
+    <node x="881.3316326530614" y="0.0">Property</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Player_3rd" target="Player_2nd">
+      <point x="-37.25" y="-32.0" />
+      <point x="444.25" y="838.0" />
+      <point x="434.75000000000006" y="838.0" />
+      <point x="0.0" y="32.0" />
+    </edge>
+    <edge source="Ice" target="Property">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="Player_1st" target="Defense">
+      <point x="-52.0" y="-181.0" />
+      <point x="296.72448979591843" y="307.0" />
+      <point x="182.50000000000006" y="307.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="Player_2nd" target="Skill">
+      <point x="41.5" y="-32.0" />
+      <point x="476.25000000000006" y="724.0" />
+      <point x="508.18622448979596" y="724.0" />
+      <point x="508.18622448979596" y="94.0" />
+      <point x="511.6887755102042" y="94.0" />
+      <point x="80.85714285714283" y="32.0" />
+    </edge>
+    <edge source="Player_1st" target="Utility">
+      <point x="-104.0" y="-181.0" />
+      <point x="244.72448979591843" y="317.0" />
+      <point x="51.5" y="317.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="Player_2nd" target="Player_1st">
+      <point x="-41.5" y="-32.0" />
+      <point x="393.25000000000006" y="724.0" />
+      <point x="348.72448979591843" y="724.0" />
+      <point x="0.0" y="181.0" />
+    </edge>
+    <edge source="Defense" target="Skill">
+      <point x="0.0" y="-18.5" />
+      <point x="182.50000000000006" y="94.0" />
+      <point x="349.9744897959185" y="94.0" />
+      <point x="-80.85714285714289" y="32.0" />
+    </edge>
+    <edge source="Fire" target="Property">
+      <point x="0.0" y="-18.5" />
+      <point x="1160.8316326530614" y="57.0" />
+      <point x="989.3316326530614" y="57.0" />
+      <point x="48.0" y="18.5" />
+    </edge>
+    <edge source="Dark" target="Property">
+      <point x="0.0" y="-18.5" />
+      <point x="1049.8316326530614" y="67.0" />
+      <point x="965.3316326530614" y="67.0" />
+      <point x="24.0" y="18.5" />
+    </edge>
+    <edge source="Player_3rd" target="Skill">
+      <point x="37.25" y="-32.0" />
+      <point x="518.75" y="838.0" />
+      <point x="541.2244897959184" y="838.0" />
+      <point x="541.2244897959184" y="94.0" />
+      <point x="552.1173469387755" y="94.0" />
+      <point x="121.28571428571418" y="32.0" />
+    </edge>
+    <edge source="Utility" target="Skill">
+      <point x="0.0" y="-18.5" />
+      <point x="51.5" y="84.0" />
+      <point x="309.5459183673471" y="84.0" />
+      <point x="-121.28571428571428" y="32.0" />
+    </edge>
+    <edge source="Player_1st" target="Attack">
+      <point x="0.0" y="-181.0" />
+      <point x="348.72448979591843" y="317.0" />
+      <point x="364.5" y="317.0" />
+      <point x="0.0" y="86.5" />
+    </edge>
+    <edge source="Attack" target="Skill">
+      <point x="0.0" y="-86.5" />
+      <point x="364.5" y="94.0" />
+      <point x="390.40306122448993" y="94.0" />
+      <point x="-40.428571428571445" y="32.0" />
+    </edge>
+    <edge source="Weapon" target="Property">
+      <point x="-65.75" y="-72.5" />
+      <point x="683.0816326530614" y="57.0" />
+      <point x="893.3316326530614" y="57.0" />
+      <point x="-48.0" y="18.5" />
+    </edge>
+    <edge source="Player_1st" target="Skill">
+      <point x="52.0" y="-181.0" />
+      <point x="400.72448979591843" y="307.0" />
+      <point x="480.25000000000006" y="307.0" />
+      <point x="480.25000000000006" y="94.0" />
+      <point x="430.8316326530613" y="94.0" />
+      <point x="-5.6843418860808015E-14" y="32.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7959183673469388" x="602.5" y="504.5" />
+  <SelectedNodes>
+    <node>Events</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
