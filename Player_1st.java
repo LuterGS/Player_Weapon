@@ -15,6 +15,7 @@ public class Player_1st implements Skill {
 
     public Player_1st(String name){
         this();
+        //test
     }
 
     public Player_1st() {
