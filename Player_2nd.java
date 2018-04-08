@@ -16,7 +16,6 @@ public class Player_2nd extends Player_1st {
         this.HP_max = Player1.HP_max;
         this.MP_max = Player1.MP_max;
         this.exp_max = Player1.exp_max;
-
     }
 
 

@@ -13,12 +13,11 @@ public class Player_1st implements Skill {
     protected Skill first = null;
     protected Weapon MyWeapon = null;
 
-    public Player_1st(String name){
+    Player_1st(String name){
         this();
-        //test
     }
 
-    public Player_1st() {
+    Player_1st() {
         this.name = name;
         this.HP = 100;
         this.MP = 100;
@@ -28,7 +27,7 @@ public class Player_1st implements Skill {
         this.exp_max = 1000;
     }
 
-    public void Level_up(){
+    private void level_up(){
         this.exp_max += 50 * this.level;
         this.HP_max += 10 * this.level;
         this.MP_max += 8 * this.level;
@@ -39,7 +38,7 @@ public class Player_1st implements Skill {
     }
 
 
-    public void Change_Skill(Object Skill){
+    public void change_skill(Object Skill){
 
         if(Skill instanceof Attack){
             this.first = (Attack) Skill;
@@ -55,6 +54,13 @@ public class Player_1st implements Skill {
         }
     }
 
+    public void get_Weapon(int Tier) {
+
+        this.MyWeapon = new Weapon(Tier);
+        System.out.println("무기 획득");
+        System.out.println("무기 이름은 " + this.MyWeapon.get_name());
+        System.out.printf("공걱력 : %d, 방어력 : %d, Tier: %d\n", this.MyWeapon.getValue(1),this.MyWeapon.getValue(2),this.MyWeapon.getValue(3));
+    };
 
 
 }
