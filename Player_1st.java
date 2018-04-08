@@ -9,9 +9,15 @@ public class Player_1st implements Skill {
     protected int MP_max;
     protected int level_max = 30;
     protected int exp_max;
-    Skill first = null;
+
+    protected Skill first = null;
+    protected Weapon MyWeapon = null;
 
     public Player_1st(String name){
+        this();
+    }
+
+    public Player_1st() {
         this.name = name;
         this.HP = 100;
         this.MP = 100;
