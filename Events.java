@@ -69,6 +69,7 @@ public class Events {
             "미스틸테인",
             "잠시드의 잔"
     };
+    //무기구, 방어구 이름 Database
 
 
     public static String set_name(String type){
@@ -81,5 +82,6 @@ public class Events {
             return null;
         }
     }
+    //장비 이름 설정 함수(Type에 따른 무기/방어구 Load
 
 }

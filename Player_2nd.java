@@ -17,6 +17,7 @@ public class Player_2nd extends Player_1st {
         this.MP_max = Player1.MP_max;
         this.exp_max = Player1.exp_max;
     }
+    //2차 전직시 데이터 세팅
 
 
 }

@@ -25,6 +25,7 @@ class Weapon implements Property {
             this.name = Events.set_name("무기");
         }
     }
+    //Weapon 기본 생성자
 
     private void set_property(){
 
@@ -37,6 +38,7 @@ class Weapon implements Property {
             weapon_property = new Dark();
         }
     }
+    //Weapon 속성 생성 메소드, Weapon 생성자에서 기본 설정됨
 
     public String get_name(){
         return this.name;
@@ -55,4 +57,5 @@ class Weapon implements Property {
             return 0;
         }
     }
+    //getter 확장 구현, 일일히 구현하는 것보다 번호를 이용해 한번에 여러 Value를 return 하게 함
 }

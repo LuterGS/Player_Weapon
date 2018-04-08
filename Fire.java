@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class Fire implements Property {
+//무기 불속성, 현재 속성 수치만 구현되어있고 동작은 구현되어있지 않은 상태
 
     private Random random = new Random();
     private int[] Percentage = new int[3];
