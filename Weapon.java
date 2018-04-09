@@ -1,10 +1,10 @@
 import java.util.Random;
 
-class Weapon implements Property {
+class Weapon{
 
     private Random random = new Random();
     private String name;
-    private int ATK, DEF, Tier;
+    protected int ATK, DEF, Tier;
     private Object weapon_property = null;
 
     public Weapon(){
@@ -29,7 +29,7 @@ class Weapon implements Property {
 
     private void set_property(){
 
-        int num = random.nextInt(2);
+        int num = random.nextInt(3);
         if (num == 0) {
             weapon_property = new Fire();
         }else if(num == 1) {

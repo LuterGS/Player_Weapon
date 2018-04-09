@@ -11,33 +11,42 @@ public class Attack implements Skill {
 
     public Attack(){
 
+        System.out.println("스킬 Attack 생성, 값은 랜덤으로 생성됩니다.");
         this.Skillname[0] = "회전베기";
         this.Skillname[0] = "참격";
         this.Skillname[0] = "밀어차기";
-        Atk_num[0] = 6 + random.nextInt(2);
-        Atk_num[1] = 8 + random.nextInt(2);
-        Atk_num[2] = 5 + random.nextInt(2);
-        Def_num[0] = 2 + random.nextInt(2);
-        Def_num[1] = 0 + random.nextInt(2);
-        Def_num[2] = 3 + random.nextInt(2);
+        this.Atk_num[0] = 6 + random.nextInt(3);
+        this.Atk_num[1] = 8 + random.nextInt(3);
+        this.Atk_num[2] = 5 + random.nextInt(3);
+        this.Def_num[0] = 2 + random.nextInt(3);
+        this.Def_num[1] = random.nextInt(3);
+        this.Def_num[2] = 3 + random.nextInt(3);
         //처음 생성할 때 Setting.
     }
 
 
+    @Override
+    public void show_skill() {
 
-    public void use_skill(int num){
-    //스킬 사용, 현재 출력만 구현
+        int a;
 
-        String skill_name = null;
-
-        if(num == 1){
-            skill_name = this.Skillname[0];
-        }else if(num == 2){
-            skill_name = this.Skillname[1];
-        }else if(num == 3){
-            skill_name = this.Skillname[2];
+        for (a = 0; a < 3; a++) {
+            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }
-        print_skilluse(skill_name, num);
+    }
 
+    @Override
+    public int return_atk(int num) {
+        return this.Atk_num[num-1];
+    }
+
+    @Override
+    public int return_def(int num) {
+        return this.Def_num[num-1];
+    }
+
+    @Override
+    public String return_name(int num) {
+        return this.Skillname[num-1];
     }
 }

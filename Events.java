@@ -4,6 +4,7 @@ public class Events {
 
     private static Random random = new Random();
 
+    //무기구, 방어구 이름 Database
     private static String[] 무기 = { //41개
             "간장",
             "막야",
@@ -69,19 +70,61 @@ public class Events {
             "미스틸테인",
             "잠시드의 잔"
     };
-    //무기구, 방어구 이름 Database
 
+    private static String[] 몬스터_이름 = {  //39
+            "교인",
+            "삼족오",
+            "염파",
+            "두억시니",
+            "삼두일족응",
+            "어둑시니",
+            "장사장천",
+            "지하국대적",
+            "기린",
+            "백악",
+            "승황",
+            "최강다람쥐",
+            "크샬다오라",
+            "제노지바",
+            "네르기간테",
+            "오니",
+            "캇파",
+            "아쿨트",
+            "강지원",
+            "간다르바",
+            "아수라",
+            "팔부신중",
+            "레비아탄",
+            "베헤모스",
+            "오안네스",
+            "훔바바",
+            "도도가마루",
+            "리빙아머",
+            "만티코어",
+            "볼퍼팅어",
+            "와이번",
+            "아팡크",
+            "해기스",
+            "흡혈귀",
+            "히포그리프",
+            "니드호그",
+            "오르문간드",
+            "람쥐썬더",
+            "흐룽그니르"
+    };
 
+    //장비 이름 설정 함수(Type에 따른 무기/방어구 Load
     public static String set_name(String type){
 
-        if(type == "무기"){
+        if(type.equals("무기")){
             return 무기[random.nextInt(40)];
-        }else if(type == "방어구"){
+        }else if(type.equals("방어구")) {
             return 방어구[random.nextInt(18)];
+        }else if(type.equals("몬스터")){
+            return 몬스터_이름[random.nextInt(38)];
         }else{
             return null;
         }
     }
-    //장비 이름 설정 함수(Type에 따른 무기/방어구 Load
 
 }
