@@ -16,7 +16,7 @@ public class Defense2 {
         int a;
 
         for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
+            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }
     }
 
@@ -29,24 +29,17 @@ public class Defense2 {
         //처음 생성할 때 Setting.
     }
 
-    public int DivineFavor(int PlayerDef) {
-
-        int afterDef;
+    public void DivineFavor(player_2nd player2) {
 
         System.out.println("놈들은 뭐에 단단해졌는지 모를겁니다.");
-        afterDef = PlayerDef * (1+random.nextInt(2));
-
-        return afterDef;
+        player2.DEF = player2.DEF * (1+random.nextInt(2));
 
     }//랜덤으로 기존 방어력의 n배 증가
+
     @Override
     public int return_atk(int num) {
         return 0;
     }
-
-
-
-
 
     @Override
     public int return_def(int num) {

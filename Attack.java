@@ -11,10 +11,6 @@ public class Attack implements Skill {
     private int[] posibility = new int [3];
     //스킬 종류 3개, 개당 공격\방어 수치 각각 1개씩 가짐
 
-    pState pS = new pState();
-
-    //pState(playerState의 약자)는 player Attack,Defense,Health만 저장하는 일종의 구조체
-
     public Attack(){
 
         System.out.println("스킬 Attack 생성, 값은 랜덤으로 생성됩니다.");
@@ -23,32 +19,28 @@ public class Attack implements Skill {
         this.Skillname[2] = "칼춤";
     }
 
-    public pState false_Swipe(int pAttack, int pDefense, int pHealth, int eAttack, int eDefense){
+    //칼등치기 메소드
+    public void false_Swipe(Player_1st player1, Monster monster){
 
         //false_Swipe == 칼등치기
-        // 확률에 따라 성공,실패 갈림
+        //확률에 따라 성공,실패 갈림
         //성공 -> 1배 공격력, 상대 공격력만큼 회복(딜 받고 그만큼 회복이라 쌤쌤 ㅎ)
 
         this.posibility[0] = random.nextInt(4);
 
+
         if (this.posibility[0] > 2){
-
-            pS.pHealth += eAttack;
-            pS.pAttack = pAttack;
-            pS.pDefense = pDefense;
-
-            return pS;
-        }
-
-        //실패 -> 그대로 리턴
-        //이부분은 뭔가 이상함 고민이 좀 더 필요할 듯
-
-        else{
-            return pS;
+            System.out.println("칼등치기 성공!");
+            player1.HP += (player1.DEF-monster.ATK);
+        }else{
+            //칼등치기에 실패하면 플레이어는 그대로 공격받음
+            System.out.println("칼등치기 실패!");
+            monster.attackPlayer(player1);
         }
     }
 
-    public pState double_Edge(int pAttack, int pDefense, int pHealth, int eAttack, int eDefense){
+    //이판사판태클 메소드
+    public void double_Edge(Player_1st player1, Monster monster){
 
         //double_Edge == 이판사판태클
         //3배 데미지
@@ -56,19 +48,27 @@ public class Attack implements Skill {
 
         this.posibility[0] = random.nextInt(5);
 
-        pS.pHealth -= this.posibility[0];
-        pS.pAttack = 3*pAttack;
-        return pS;
+        System.out.println("이판사판태클로 공격합니다");
+
+        player1.HP -= this.posibility[0];
+        player1.ATK = 3 * player1.ATK;
+        monster.HP -= (monster.DEF -player1.ATK);
+
+        monster.attackPlayer(player1);
+
     }
 
-    public pState sword_Dance(int pAttack, int pDefense, int pHealth, int eAttack, int eDefense){
+    //칼춤 메소드
+    public void sword_Dance(Player_1st player1){
 
         //sword_Dance == 칼춤
         //칼춤 시전시 일정 수치만큼 pAttack 증가
-        this.posibility[0] = random.nextInt(5);
-        pS.pAttack =  pAttack+this.posibility[0];
 
-        return pS;
+        this.posibility[0] = random.nextInt(5);
+        player1.ATK = player1.ATK +this.posibility[0];
+
+        monster.attackPlayer(player1);
+
 
     }
 
@@ -77,7 +77,6 @@ public class Attack implements Skill {
 
         int a;
 
-        //스킬 목록을 출력할 때 인덱싱은 1부터
         for (a = 0; a < 3; a++) {
             System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }

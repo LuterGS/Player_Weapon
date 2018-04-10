@@ -66,15 +66,15 @@ public class Player_1st{
         this.MyWeapon = new Weapon();
         System.out.println("무기 획득");
         System.out.println("무기 이름은 " + this.MyWeapon.get_name());
-        System.out.printf("공걱력 : %d, 방어력 : %d\n",
-                this.MyWeapon.getValue(1),this.MyWeapon.getValue(2));
+        System.out.printf("공걱력 : %d, 방어력 : %d\n", this.MyWeapon.getValue(1),this.MyWeapon.getValue(2));
     }
 
     //플레이어(this)가 몬스터(monster)를 공격하는 메서드
+    //모든 공격들은 플레이어의 선공으로 시작된다고 생각하며 메서드 작성
     public void attackMonster(Monster monster){
 
         String skillSet = this.first.getClass().getName();
-        // 현재 스킬셋이 Attack인지 Defense인지
+        // 현재 스킬셋이 Attack인지 Defense인지 저장한 변수
         int select;
         Attack attack = new Attack();
         Defense defense = new Defense();
@@ -89,36 +89,29 @@ public class Player_1st{
 
         if(skillSet == "Attack"){
             switch (select){
+                case 0:
+                    false_Swipe(Player_1st player1, monster);
+                    break;
                 case 1:
-                    false_Swipe();
+                    double_Edge(Player_1st player1, monster);
                     break;
                 case 2:
-                    double_Edge();
-                    break;
-                case 3:
-                    sword_Dance();
+                    sword_Dance(Player_1st player1);
                     break;
             }
         }else{
             switch (select){
+                case 0:
+                    runAway(Player_1st player1, monster);
+                    break;
                 case 1:
-                    runAway();
+                    Harden(Player_1st player1, monster);
                     break;
                 case 2:
-                    Harden();
-                    break;
-                case 3:
-                    defensive_wall();
+                    defensive_wall(Player_1st player1, monster);
                     break;
             }
         }
-
-
-
-
-
-
-        //this.HP -= (this.DEF - monster.ARK);
 
     }
 

@@ -29,42 +29,47 @@ public class Defense implements Skill {
         //처음 생성할 때 Setting.
     }
 
-    public Boolean RunAway() {
-
-        String result = "success";
+    public void RunAway(Player_1st player1,Monster monster) {
 
             System.out.println("제발 따라오지마라 ㅠㅠㅠㅠㅠㅠ");
+
             int randomNum = random.nextInt(100);
-            if(randomNum > 80 ) return true;
-            else return false;
 
-    } // 도망의 성공여부만 리턴합니다.
+            if(randomNum > 80 ){
+                System.out.println("도망에 성공했다아아");
+                return;
+            }else{
+                System.out.println("어딜 도망가");
+                monster.attackPlayer(player1);
+            }
 
-    public int Harden(int PlayerDef) {
+    }
+
+    public void Harden(Player_1st player1, Monster monster) {
+
         System.out.println("바위처럼 단단하게~~");
-        int result =  PlayerDef * 2;
-        return result;
 
-    } //그냥 상승하는 방어력만 리턴합니다.
+        player1.DEF *= 2;
 
-    public int defensive_wall(int PlayerAtk,int PlayerHP,int EnemyATK,int EnemyHP) {
+        monster.attackPlayer(player1);
+
+
+    }
+
+    public void defensive_wall(Player_1st player1, Monster monster) {
+
+        monster.attackPlayer(player1);
 
         System.out.println("니 공격은 소용없다");
+        player1.HP += monster.ATK;
 
-        PlayerHP += EnemyATK;//상대 공격력만큼 체력회복
-
-
-
-    } // 회복되는 량만 리턴합니다.
+    }
 
 
     @Override
     public int return_atk(int num) {
         return 0;
     }
-
-
-
 
 
     @Override

@@ -128,3 +128,10 @@ public class Events {
     }
 
 
+    public void fullFillHP(player_1st player1){
+        System.out.println("HP를 전부 충전합니다");
+        player1.HP = player1.HP_max;
+    }
+}
+
+

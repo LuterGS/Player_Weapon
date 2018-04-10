@@ -9,8 +9,6 @@ public class Attack_2 implements Skill{
     private int[] Def_num = new int[3];
     private int[] posibility = new int [3];
 
-    pState pS = new pState();
-
     public Attack_2(){
 
         System.out.println("스킬 Attack 생성, 값은 랜덤으로 생성됩니다.");
@@ -18,15 +16,13 @@ public class Attack_2 implements Skill{
 
     }
 
-    public pState  lucky_Punch(int pAttack, int pDefense, int pHealth, int eAttack, int eDefense){
+    public void lucky_Punch(Player_1st player1, Monster monster){
 
         //1~5배만큼의 공격력으로 공격
 
         System.out.println("럭키 펀치!");
         this.posibility[0] = random.nextInt(4) +1;
-        pS.pAttack = pAttack*this.posibility[0];
-
-        return pS;
+        player1.ATK = player1.ATK * this.posibility[0];
     }
 
     @Override

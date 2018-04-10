@@ -1,6 +1,4 @@
-public class
-
-
+import java.util.Random;
 
 Dark implements Property {
 
