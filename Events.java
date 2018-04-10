@@ -1,8 +1,10 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Events {
 
     private static Random random = new Random();
+    private static Scanner scan = new Scanner(System.in);
 
     //무기구, 방어구 이름 Database
     private static String[] 무기 = { //41개
@@ -127,4 +129,43 @@ public class Events {
         }
     }
 
+
+    public static void met_crystal(Player_1st Warrior){
+
+        Warrior.HP = Warrior.HP_max;
+    }
+
+    public static void met_skillchanger(Player_3rd Warrior){
+
+        int select;
+
+        if(Warrior.level <= 10){
+
+            System.out.printf("스킬상인을 만났습니다! 공격형 스킬셋으로 변경은 0, 방어형 스킬셋으로 변경은 1을 입력해주세요 :");
+            select = scan.nextInt(2);
+            Warrior.change_skill(select);
+
+        }else if(Warrior.level <= 20){
+
+            System.out.printf("스킬상인을 만났습니다! 첫 번째 스킬셋을 변경하려면 0, 두 번째는 1을 입력해주세요 :");
+            select = scan.nextInt(2);
+            if(select == 0){
+                System.out.printf("첫 번째 스킬셋을 선택하셨습니다. 공격형으로 변경은 0, 방어형으로 변경은 1을 입력해주세요 :");
+                select = scan.nextInt(2);
+                Warrior.change_skill(select);
+            }
+            else if(select == 1){
+                System.out.printf("두 번째 스킬셋을 선택하셨습니다. 공격형으로 변경은 0, 방어형으로 변경은 1을 입력해주세요 :");
+                select = scan.nextInt(2);
+                Warrior.change_2_skill(select);
+            }
+        }
+    }
+
+    public static void combat(Player_3rd Warrior){
+
+        Monster monster = new Monster(Warrior.level);
+
+
+    }
 }

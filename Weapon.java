@@ -4,7 +4,7 @@ class Weapon{
 
     private Random random = new Random();
     private String name;
-    protected int ATK, DEF
+    protected int ATK, DEF;
     private Object weapon_property = null;
 
     public Weapon(){
@@ -21,8 +21,8 @@ class Weapon{
         }
     }
 
-    //Weapon 속성 생성 메소드, Weapon 생성자에서 기본 설정됨
 
+    //Weapon 속성 생성 메소드, Weapon 생성자에서 기본 설정됨
     public String get_name(){
         return this.name;
     }
