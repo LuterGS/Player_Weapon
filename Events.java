@@ -162,10 +162,19 @@ public class Events {
         }
     }
 
-    public static void combat(Player_3rd Warrior){
+    public static int combat(Player_3rd Warrior){
 
         Monster monster = new Monster(Warrior.level);
 
+        while(true) {
+            monster.attacked(Warrior.attack());
+            Warrior.attacked(monster.attack());
 
+            if(monster.get_hp() == 0){
+                return 0;
+            }else if(Warrior.HP == 0){
+                return 1;
+            }
+        }
     }
 }
