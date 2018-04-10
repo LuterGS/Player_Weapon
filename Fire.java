@@ -9,10 +9,10 @@ public class Fire implements Property {
 
     public Fire(){
 
-        int temp = random.nextInt(9) + 1;
-        this.Percentage[0] = random.nextInt(40) + 60;
-        this.Percentage[1] = (100 - this.Percentage[0]) * temp;
-        this.Percentage[2] = 100 - (this.Percentage[0] + this.Percentage[1]);
+        int temp = random.nextInt(9) + 1; // 1~9
+        this.Percentage[0] = random.nextInt(40) + 60; // 60~99
+        this.Percentage[1] = (100 - this.Percentage[0]) * temp; // (1~40)*(1~9) , 1~360
+        this.Percentage[2] = 100 - (this.Percentage[0] + this.Percentage[1]); // 100 - (1~360)
     }
 
 

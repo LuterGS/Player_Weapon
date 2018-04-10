@@ -44,10 +44,10 @@ public class Player_1st{
         this.HP = this.HP_max;
         this.MP = this.MP_max;
     }
-    //레벨업 시 변경되는 점울 구현한 메소드. 추가 필요
+    //레벨업 시 변경되는 점을 구현한 메소드. 추가 필요
 
 
-    //스킬셋 바꾸는 메소
+    //스킬셋 바꾸는 메소드
     public void change_skill(String type){
 
         if(type.equals("Attack")){

@@ -4,6 +4,7 @@ public class Attack implements Skill {
 //공격형 스킬셋, 속성에 따른 수치 부여 필요
 
     private Random random = new Random();
+
     private String[] Skillname = new String[3];
     private int[] Atk_num = new int[3];
     private int[] Def_num = new int[3];
@@ -13,11 +14,13 @@ public class Attack implements Skill {
 
         System.out.println("스킬 Attack 생성, 값은 랜덤으로 생성됩니다.");
         this.Skillname[0] = "회전베기";
-        this.Skillname[0] = "참격";
-        this.Skillname[0] = "밀어차기";
+        this.Skillname[1] = "참격";
+        this.Skillname[2] = "밀어차기";
+
         this.Atk_num[0] = 6 + random.nextInt(3);
         this.Atk_num[1] = 8 + random.nextInt(3);
         this.Atk_num[2] = 5 + random.nextInt(3);
+
         this.Def_num[0] = 2 + random.nextInt(3);
         this.Def_num[1] = random.nextInt(3);
         this.Def_num[2] = 3 + random.nextInt(3);
