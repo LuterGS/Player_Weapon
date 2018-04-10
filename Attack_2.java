@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Attack_2 implements  Skill{
+public class Attack_2 implements Skill{
 
     private Random random = new Random();
 
@@ -35,7 +35,7 @@ public class Attack_2 implements  Skill{
         int a;
 
         for (a = 0; a < 1; a++) {
-            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
+            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }
     }
 

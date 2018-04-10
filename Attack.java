@@ -77,8 +77,9 @@ public class Attack implements Skill {
 
         int a;
 
+        //스킬 목록을 출력할 때 인덱싱은 1부터
         for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
+            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }
     }
 
