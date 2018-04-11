@@ -8,14 +8,12 @@ public class Defense implements Skill {
     private int[] Atk_num = new int[3];
     private int[] Def_num = new int[3];
 
-
-
     @Override
     public void show_skill() {
         int a;
 
         for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
+            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
         }
     }
 
@@ -33,10 +31,10 @@ public class Defense implements Skill {
 
         String result = "success";
 
-            System.out.println("제발 따라오지마라 ㅠㅠㅠㅠㅠㅠ");
-            int randomNum = random.nextInt(100);
-            if(randomNum > 80 ) return true;
-            else return false;
+        System.out.println("제발 따라오지마라 ㅠㅠㅠㅠㅠㅠ");
+        int randomNum = random.nextInt(100);
+        if(randomNum > 80 ) return true;
+        else return false;
 
     } // 도망의 성공여부만 리턴합니다.
 
@@ -47,7 +45,7 @@ public class Defense implements Skill {
 
     } //그냥 상승하는 방어력만 리턴합니다.
 
-    public int defensive_wall(int PlayerAtk,int PlayerHP,int EnemyATK,int EnemyHP) {
+    public void defensive_wall(int PlayerAtk,int PlayerHP,int EnemyATK,int EnemyHP) {
 
         System.out.println("니 공격은 소용없다");
 
@@ -65,8 +63,6 @@ public class Defense implements Skill {
 
 
 
-
-
     @Override
     public int return_def(int num) {
         return 0;
@@ -77,4 +73,3 @@ public class Defense implements Skill {
         return null;
     }
 }
-

@@ -12,7 +12,6 @@ public class Attack implements Skill {
     //스킬 종류 3개, 개당 공격\방어 수치 각각 1개씩 가짐
 
     pState pS = new pState();
-
     //pState(playerState의 약자)는 player Attack,Defense,Health만 저장하는 일종의 구조체
 
     public Attack(){

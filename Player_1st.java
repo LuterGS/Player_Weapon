@@ -76,8 +76,11 @@ public class Player_1st{
         String skillSet = this.first.getClass().getName();
         // 현재 스킬셋이 Attack인지 Defense인지
         int select;
+
+        Player_1st player1 = new Player_1st();
         Attack attack = new Attack();
         Defense defense = new Defense();
+        pState preturn = new pState();
 
         System.out.println("몬스터를 공격합니다");
 
@@ -87,28 +90,45 @@ public class Player_1st{
         System.out.println("사용할 스킬 숫자를 입력해주세요: ");
         select = scan.nextInt();
 
+
         if(skillSet == "Attack"){
             switch (select){
+                case 0:
+                    preturn = false_Swipe(player1.ATK, player1.DEF, player1.HP, monster.ATK, monster.DEF);
+                    player1.ATK = preturn.pAttack ;
+                    player1.DEF = preturn.pDefense;
+                    player1.HP = preturn.pHealth;
+                    break;
                 case 1:
-                    false_Swipe();
+                    double_Edge(player1.ATK, player1.DEF, player1.HP, monster.ATK, monster.DEF);
+                    player1.ATK = preturn.pAttack ;
+                    player1.DEF = preturn.pDefense;
+                    player1.HP = preturn.pHealth;
                     break;
                 case 2:
-                    double_Edge();
-                    break;
-                case 3:
-                    sword_Dance();
+                    sword_Dance(player1.ATK, player1.DEF, player1.HP, monster.ATK, monster.DEF);
+                    player1.ATK = preturn.pAttack ;
+                    player1.DEF = preturn.pDefense;
+                    player1.HP = preturn.pHealth;
                     break;
             }
         }else{
             switch (select){
+                case 0:
+                    if (runAway() == false){
+                        System.out.println("도망에 실패했습니다!");
+                        monster.attack(player1);
+                    }else{
+                        System.out.println("도망에 성공했습니다");
+                        return;
+                    }
+                    break;
                 case 1:
-                    runAway();
+                    Harden(player1.DEF);
+                    result = player1.DEF;
                     break;
                 case 2:
-                    Harden();
-                    break;
-                case 3:
-                    defensive_wall();
+                    defensive_wall(player1.ATK, player1.HP, monster.ATK, monster.HP);
                     break;
             }
         }
