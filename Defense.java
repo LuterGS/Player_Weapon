@@ -9,9 +9,9 @@ public class Defense implements Skill {
     public Defense(){
 
         System.out.println("스킬 Defence 생성.");
-        this.Skillname[0] = "도망";
-        this.Skillname[1] = "단단해지기";
-        this.Skillname[2] = "방벽";
+        this.Skillname[0] = "도망, 성공시 전투 종료";
+        this.Skillname[1] = "단단해지기, 현재 턴에서 방어력 두배";
+        this.Skillname[2] = "방벽, 몬스터의 공격력만큼 체력 회복";
 
         //처음 생성할 때 Setting.
     }

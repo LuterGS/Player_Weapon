@@ -168,6 +168,10 @@ public class Events {
             double[] player_value = player1.MyTurn(MON);
             double[] monster_value = MON.get_info();
 
+            if(player_value[0] == -9999 && player_value[1] == -9999){
+                break;
+            }
+
             System.out.printf("현재 턴에서의 %s의 체력 : %.1f 공격력 : %.1f, 방어력 : %.1f\n", player1.getName(), player1.getHP(), player_value[0], player_value[1]);
             System.out.printf("현재 턴에서의 %s의 체력 : %.1f 공격력 : %.1f, 방어력 : %.1f\n", MON.getName(), MON.get_HP(), monster_value[0], monster_value[1]);
 

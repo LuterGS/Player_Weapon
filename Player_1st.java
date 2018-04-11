@@ -1,8 +1,10 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player_1st{
 //1차 플레이어 정보
 
+    protected Random random = new Random();
     protected Scanner scan = new Scanner(System.in);
     protected String name;
     protected double HP, ATK, DEF;
@@ -22,7 +24,7 @@ public class Player_1st{
 
     Player_1st() {
         this.HP = 100;
-        this.ATK = 50;
+        this.ATK = 30;
         this.DEF = 20;
         this.level = 1;
         this.HP_max = 100;
@@ -43,14 +45,25 @@ public class Player_1st{
         return this.HP;
     }
 
-    protected void level_up(){
-        this.exp_max += 100 * this.level;
-        this.HP_max += 10 * this.level;
-        this.ATK += 5 * this.level;
-        this.DEF += 5 * this.level;
-        this.level++;
-        this.exp = 0;
-        this.HP = this.HP_max;
+    public void exp_up(){
+
+        int rand = random.nextInt(21) - 10;
+        double EX = (this.exp_max * 0.4) + (this.exp_max * (rand*0.01));
+        this.exp += EX;
+    }
+
+    protected void check_level_up(){
+
+        if(exp >= exp_max) {
+            this.exp_max += 100 * this.level;
+            this.HP_max += 10 * this.level;
+            this.ATK += 5 * this.level;
+            this.DEF += 5 * this.level;
+            this.level++;
+            this.exp = 0;
+            this.HP = this.HP_max;
+            System.out.printf("레벨 업! 현재 레벨 : %d\n", this.level);
+        }
     }
     //레벨업 시 변경되는 점을 구현한 메소드. 추가 필요
 
@@ -71,7 +84,7 @@ public class Player_1st{
     //무기 얻는 메소드
     public void get_Weapon() {
 
-        int Tier = this.MyWeapon.getValue(3) + 1;
+        int Tier = this.MyWeapon.getValue(2) + 1;
         this.MyWeapon = new Weapon(Tier);
         System.out.println("무기 획득, 무기 이름은 " + this.MyWeapon.get_name());
         System.out.printf("공걱력 : %d, 방어력 : %d, 티어 : %d\n", this.MyWeapon.getValue(0),this.MyWeapon.getValue(1), this.MyWeapon.getValue(2));
@@ -82,7 +95,7 @@ public class Player_1st{
     public double[] MyTurn(Monster monster){
 
         int select;
-        double value[] = {this.ATK, this.DEF};
+        double value[] = {this.ATK + this.MyWeapon.getValue(0), this.DEF +  + this.MyWeapon.getValue(1)};
         double output[] = new double[2];
         //2개형 return, 첫번째는 공격력, 두번째는 방어력;
 
@@ -96,7 +109,7 @@ public class Player_1st{
 
         this.first.show_skill(); // 스킬셋의 스킬 목록을 출력해주는 함수
 
-        System.out.println("사용할 스킬 숫자를 입력해주세요: ");
+        System.out.printf("사용할 스킬 숫자를 입력해주세요: ");
         select = scan.nextInt();
 
         switch (select){

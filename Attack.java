@@ -24,10 +24,10 @@ public class Attack implements Skill {
         //확률에 따라 성공,실패 갈림
         //성공 -> 2배 공격력, 상대 공격력만큼 회복
 
-        int posibility = random.nextInt(4);
+        int posibility = random.nextInt(10);
 
 
-        if (posibility > 2){
+        if (posibility > 6){
             System.out.println("칼등치기 성공!");
             AD[0] *= 2;
             player1.HP += (player1.DEF-monster.get_ATK());
@@ -53,7 +53,7 @@ public class Attack implements Skill {
         System.out.println("이판사판태클로 공격합니다");
         AD[0] *= 3;
 
-        System.out.printf("체력이 %f 에서", player1.HP);
+        System.out.printf("체력이 %.1f 에서", player1.HP);
         player1.HP *= 1 - (player_damage * 0.01);
         System.out.printf(" %.1f로 감소했습니다. 총 %.1f퍼센트 감소.\n", player1.HP, player_damage);
 
@@ -76,9 +76,9 @@ public class Attack implements Skill {
     @Override
     public void show_skill() {
 
-        System.out.printf("첫번째 스킬 : %s, 효과 : 스킬 성공시 데미지 2배, 상대 공격력만큼 회복. 실패시 공격 못함\n", this.Skillname[0]);
-        System.out.printf("두번째 스킬 : %s, 효과 : 무조건 데미지 3배, 랜덤 수치만큼 자신의 체력 감소\n", this.Skillname[1]);
-        System.out.printf("세번째 스킬 : %s, 효과 : 이번 한 턴에 랜덤한 수치만큼 공격력 증가\n", this.Skillname[2]);
+        System.out.printf("0번째 스킬 : %s, 효과 : 스킬 성공시 데미지 2배, 상대 공격력만큼 회복. 실패시 공격 못함\n", this.Skillname[0]);
+        System.out.printf("1번째 스킬 : %s, 효과 : 무조건 데미지 3배, 랜덤 수치만큼 자신의 체력 감소\n", this.Skillname[1]);
+        System.out.printf("2번째 스킬 : %s, 효과 : 이번 한 턴에 랜덤한 수치만큼 공격력 증가\n", this.Skillname[2]);
 
     }
 
