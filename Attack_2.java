@@ -5,9 +5,6 @@ public class Attack_2 implements Skill{
     private Random random = new Random();
 
     private String[] Skillname = new String[3];
-    private int[] Atk_num = new int[3];
-    private int[] Def_num = new int[3];
-    private int[] posibility = new int [3];
 
     public Attack_2(){
 
@@ -16,13 +13,30 @@ public class Attack_2 implements Skill{
 
     }
 
-    public void lucky_Punch(Player_1st player1, Monster monster){
+    //럭키펀치
+    @Override
+    public double[] Skill_1(Player_1st player1, Monster monster, double AD[]) {
 
         //1~5배만큼의 공격력으로 공격
 
         System.out.println("럭키 펀치!");
-        this.posibility[0] = random.nextInt(4) +1;
-        player1.ATK = player1.ATK * this.posibility[0];
+        int gop_damage = random.nextInt(4) +1;
+        AD[0] *= gop_damage;
+        return AD;
+    }
+
+    @Override
+    public double[] Skill_2(Player_1st player1, Monster monster, double AD[]) {
+
+        System.out.println("스킬 2");
+        return AD;
+    }
+
+    @Override
+    public double[] Skill_3(Player_1st player1, Monster monster, double AD[]) {
+
+        System.out.println("스킬 3");
+        return AD;
     }
 
     @Override
@@ -30,19 +44,9 @@ public class Attack_2 implements Skill{
 
         int a;
 
-        for (a = 0; a < 1; a++) {
-            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
+        for (a = 0; a < 3; a++) {
+            System.out.printf("스킬 %d : %s,\n", a, this.Skillname[a]);
         }
-    }
-
-    @Override
-    public int return_atk(int num) {
-        return this.Atk_num[num-1];
-    }
-
-    @Override
-    public int return_def(int num) {
-        return this.Def_num[num-1];
     }
 
     @Override

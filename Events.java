@@ -1,8 +1,10 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Events {
 
     private static Random random = new Random();
+    private static Scanner scan = new Scanner(System.in);
 
     //무기구, 방어구 이름 Database
     private static String[] 무기 = { //41개
@@ -127,11 +129,64 @@ public class Events {
         }
     }
 
-
-    public void fullFillHP(player_1st player1){
+    //HP 채워줌
+    public static void fullFillHP(Player_1st player1){
         System.out.println("HP를 전부 충전합니다");
         player1.HP = player1.HP_max;
     }
+
+    //스킬셋 교환
+    public static Player_1st change_skillset(Player_1st player1){
+
+        int select;
+        System.out.printf("스킬상인을 만났습니다! 현재 스킬셋을 바꾸려면 1, 지나치시려면 0을 입력해주세요 :");
+        select = scan.nextInt(2);
+        if(select == 0){
+
+        }else if(select == 1){
+            System.out.printf("공격형 스킬셋으로의 변경은 0, 방어형 스킬셋으로의 변경은 1을 눌러주세요.");
+            select = scan.nextInt(2);
+            if(select == 0){
+                player1.change_skill("Attack");
+            }else if(select == 1){
+                player1.change_skill("Defense");
+            }
+        }
+        return player1;
+    }
+
+    //전투
+    public static Player_1st combat(Player_1st player1){
+
+        Monster MON = new Monster(player1.level);
+        MON.getInfo();
+
+        while(true) {
+
+
+            //몬스터 선빵후 플레이어 공격
+            double[] player_value = player1.MyTurn(MON);
+            double[] monster_value = MON.get_info();
+
+            System.out.printf("현재 턴에서의 %s의 체력 : %.1f 공격력 : %.1f, 방어력 : %.1f\n", player1.getName(), player1.getHP(), player_value[0], player_value[1]);
+            System.out.printf("현재 턴에서의 %s의 체력 : %.1f 공격력 : %.1f, 방어력 : %.1f\n", MON.getName(), MON.get_HP(), monster_value[0], monster_value[1]);
+
+            player1.attacked(monster_value[0] - player_value[1]);
+            MON.attacked(player_value[1] - monster_value[0]);
+
+            if(player1.HP == 0){
+                break;
+            }else if (MON.get_HP() == 0) {
+                break;
+            }
+        }
+        return player1;
+
+    }
+
+
+
+
 }
 
 

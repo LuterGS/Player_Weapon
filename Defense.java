@@ -5,23 +5,10 @@ public class Defense implements Skill {
     private Random random = new Random();
 
     private String[] Skillname = new String[3];
-    private int[] Atk_num = new int[3];
-    private int[] Def_num = new int[3];
-
-
-
-    @Override
-    public void show_skill() {
-        int a;
-
-        for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 1 : %s, 공격력 : %d, 방어력 : %d\n", this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
-        }
-    }
 
     public Defense(){
 
-        System.out.println("스킬 Defence 생성, 값은 랜덤으로 생성됩니다.");
+        System.out.println("스킬 Defence 생성.");
         this.Skillname[0] = "도망";
         this.Skillname[1] = "단단해지기";
         this.Skillname[2] = "방벽";
@@ -29,7 +16,9 @@ public class Defense implements Skill {
         //처음 생성할 때 Setting.
     }
 
-    public void RunAway(Player_1st player1,Monster monster) {
+    //도망 메소드 - 일정 확률로 도망, 도망 성공시 전투 종료, 아닐시 그냥 맞음
+    @Override
+    public double[] Skill_1(Player_1st player1,Monster monster, double AD[]) {
 
             System.out.println("제발 따라오지마라 ㅠㅠㅠㅠㅠㅠ");
 
@@ -37,44 +26,43 @@ public class Defense implements Skill {
 
             if(randomNum > 80 ){
                 System.out.println("도망에 성공했다아아");
-                return;
+                AD[0] = -9999;
+                AD[1] = -9999;
             }else{
                 System.out.println("어딜 도망가");
-                monster.attackPlayer(player1);
+                AD[0] = 0;
             }
 
+            return AD;
+
     }
 
-    public void Harden(Player_1st player1, Monster monster) {
+    //단단해지기 - 방어력 2배
+    @Override
+    public double[] Skill_2(Player_1st player1, Monster monster, double AD[]) {
 
         System.out.println("바위처럼 단단하게~~");
+        AD[1] *= 2;
 
-        player1.DEF *= 2;
-
-        monster.attackPlayer(player1);
-
-
+        return AD;
     }
 
-    public void defensive_wall(Player_1st player1, Monster monster) {
+    //방벽 - 상대의 공격력만큼 체력 회복
+    @Override
+    public double[] Skill_3(Player_1st player1, Monster monster, double AD[]) {
 
-        monster.attackPlayer(player1);
-
-        System.out.println("니 공격은 소용없다");
-        player1.HP += monster.ATK;
-
+        System.out.printf("니 공격은 소용없다! 체력 %f만큼 회복\n", monster.get_ATK());
+        player1.HP += monster.get_ATK();
+        return AD;
     }
-
 
     @Override
-    public int return_atk(int num) {
-        return 0;
-    }
+    public void show_skill() {
+        int a;
 
-
-    @Override
-    public int return_def(int num) {
-        return 0;
+        for (a = 0; a < 3; a++) {
+            System.out.printf("스킬 %d : %s,\n", a, this.Skillname[a]);
+        }
     }
 
     @Override

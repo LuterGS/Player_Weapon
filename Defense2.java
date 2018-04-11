@@ -1,24 +1,11 @@
 import java.util.Random;
 
-public class Defense2 {
+public class Defense2 implements Skill{
 
     private Random random = new Random();
 
 
     private String[] Skillname = new String[1];
-    private int[] Atk_num = new int[1];
-    private int[] Def_num = new int[1];
-
-
-
-    @Override
-    public void show_skill() {
-        int a;
-
-        for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
-        }
-    }
 
     public Defense2(){
 
@@ -29,21 +16,37 @@ public class Defense2 {
         //처음 생성할 때 Setting.
     }
 
-    public void DivineFavor(player_2nd player2) {
+    //Defense_1_skill
+    @Override
+    public double[] Skill_1(Player_1st player1, Monster monster, double AD[]) {
 
         System.out.println("놈들은 뭐에 단단해졌는지 모를겁니다.");
-        player2.DEF = player2.DEF * (1+random.nextInt(2));
+        AD[1] = AD[1] * (1+random.nextInt(2));
+        return AD;
+    }
 
-    }//랜덤으로 기존 방어력의 n배 증가
-
+    //Defense_2_skill
     @Override
-    public int return_atk(int num) {
-        return 0;
+    public double[] Skill_2(Player_1st player1, Monster monster, double AD[]) {
+
+        System.out.println("스킬 2");
+        return AD;
     }
 
     @Override
-    public int return_def(int num) {
-        return 0;
+    public double[] Skill_3(Player_1st player1, Monster monster, double AD[]) {
+
+        System.out.println("스킬 3");
+        return AD;
+    }
+
+    @Override
+    public void show_skill() {
+        int a;
+
+        for (a = 0; a < 3; a++) {
+            System.out.printf("스킬 %d : %s,\n", a, this.Skillname[a]);
+        }
     }
 
     @Override

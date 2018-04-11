@@ -6,90 +6,80 @@ public class Attack implements Skill {
     private Random random = new Random();
 
     private String[] Skillname = new String[3];
-    private int[] Atk_num = new int[3];
-    private int[] Def_num = new int[3];
-    private int[] posibility = new int [3];
     //스킬 종류 3개, 개당 공격\방어 수치 각각 1개씩 가짐
 
     public Attack(){
 
-        System.out.println("스킬 Attack 생성, 값은 랜덤으로 생성됩니다.");
+        System.out.println("스킬 Attack 생성");
         this.Skillname[0] = "칼등치기";
         this.Skillname[1] = "이판사판 태클";
         this.Skillname[2] = "칼춤";
     }
 
     //칼등치기 메소드
-    public void false_Swipe(Player_1st player1, Monster monster){
+    @Override
+    public double[] Skill_1(Player_1st player1, Monster monster, double AD[]){
 
         //false_Swipe == 칼등치기
         //확률에 따라 성공,실패 갈림
-        //성공 -> 1배 공격력, 상대 공격력만큼 회복(딜 받고 그만큼 회복이라 쌤쌤 ㅎ)
+        //성공 -> 2배 공격력, 상대 공격력만큼 회복
 
-        this.posibility[0] = random.nextInt(4);
+        int posibility = random.nextInt(4);
 
 
-        if (this.posibility[0] > 2){
+        if (posibility > 2){
             System.out.println("칼등치기 성공!");
-            player1.HP += (player1.DEF-monster.ATK);
+            AD[0] *= 2;
+            player1.HP += (player1.DEF-monster.get_ATK());
+
         }else{
             //칼등치기에 실패하면 플레이어는 그대로 공격받음
             System.out.println("칼등치기 실패!");
-            monster.attackPlayer(player1);
+            AD[0] = 0;
         }
+
+        return AD;
     }
 
     //이판사판태클 메소드
-    public void double_Edge(Player_1st player1, Monster monster){
+    @Override
+    public double[] Skill_2(Player_1st player1, Monster monster, double AD[]){
 
         //double_Edge == 이판사판태클
         //3배 데미지
         //랜덤 수치만큼 자신의 체력 감소
-
-        this.posibility[0] = random.nextInt(5);
+        double player_damage = random.nextInt(25) + 26;
 
         System.out.println("이판사판태클로 공격합니다");
+        AD[0] *= 3;
 
-        player1.HP -= this.posibility[0];
-        player1.ATK = 3 * player1.ATK;
-        monster.HP -= (monster.DEF -player1.ATK);
+        System.out.printf("체력이 %f 에서", player1.HP);
+        player1.HP *= (player_damage * 0.01);
+        System.out.printf(" %f로 감소했습니다. 총 %d퍼센트 감소.\n", player1.HP, player_damage);
 
-        monster.attackPlayer(player1);
-
+        return AD;
     }
 
     //칼춤 메소드
-    public void sword_Dance(Player_1st player1){
+    @Override
+    public double[] Skill_3(Player_1st player1, Monster monster, double AD[]){
 
         //sword_Dance == 칼춤
         //칼춤 시전시 일정 수치만큼 pAttack 증가
 
-        this.posibility[0] = random.nextInt(5);
-        player1.ATK = player1.ATK +this.posibility[0];
+        double attack_plus = random.nextInt(40) + 31;
+        AD[0] *= 1 + (attack_plus * 0.01);
 
-        monster.attackPlayer(player1);
-
-
+        return AD;
     }
 
     @Override
     public void show_skill() {
 
-        int a;
+        System.out.printf("첫번째 스킬 : %s, 효과 : 스킬 성공시 데미지 2배, 상대 공격력만큼 회복. 실패시 공격 못함\n", this.Skillname[0]);
+        System.out.printf("두번째 스킬 : %s, 효과 : 무조건 데미지 3배, 랜덤 수치만큼 자신의 체력 감소\n", this.Skillname[1]);
+        System.out.printf("세번째 스킬 : %s, 효과 : 이번 한 턴에 랜덤한 수치만큼 공격력 증가\n", this.Skillname[2]);
 
-        for (a = 0; a < 3; a++) {
-            System.out.printf("스킬 %d : %s, 공격력 : %d, 방어력 : %d\n", a, this.Skillname[a], this.Atk_num[a], this.Def_num[a]);
-        }
-    }
-
-    @Override
-    public int return_atk(int num) {
-        return this.Atk_num[num-1];
-    }
-
-    @Override
-    public int return_def(int num) {
-        return this.Def_num[num-1];
     }
 
     @Override

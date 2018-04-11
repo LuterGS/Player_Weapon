@@ -4,17 +4,15 @@ class Weapon{
 
     private Random random = new Random();
     private String name;
-    protected int ATK, DEF, Tier;
+    private int ATK, DEF, TIER;
     private Object weapon_property = null;
 
-    public Weapon(){
-    }
+    //Weapon 기본 생성자
+    public Weapon(int TIER){
+        this.TIER = TIER++;
+        this.ATK = ((random.nextInt(15) + 25) + (this.TIER * 5));
+        this.DEF = ((random.nextInt(15) + 25) + (this.TIER * 5));
 
-    public Weapon(int Tier){
-        this.Tier = Tier;
-        this.ATK = (random.nextInt(15) + 25) + (this.Tier * 5);
-        this.DEF = (random.nextInt(15) + 25) + (this.Tier * 5);
-        set_property();
 
         if(this.ATK > this.DEF){
             this.name = Events.set_name("무기");
@@ -25,34 +23,18 @@ class Weapon{
             this.name = Events.set_name("무기");
         }
     }
-    //Weapon 기본 생성자
-
-    private void set_property(){
-
-        int num = random.nextInt(3);
-        if (num == 0) {
-            weapon_property = new Fire();
-        }else if(num == 1) {
-            weapon_property = new Ice();
-        }else if(num == 2){
-            weapon_property = new Dark();
-        }
-    }
-    //Weapon 속성 생성 메소드, Weapon 생성자에서 기본 설정됨
 
     public String get_name(){
         return this.name;
     }
 
     public int getValue(int num){
-        if(num == 1){
+        if(num == 0){
             return this.ATK;
-        }
-        else if(num == 2){
+        }else if(num == 1) {
             return this.DEF;
-        }
-        else if(num == 3){
-            return this.Tier;
+        }else if(num == 2){
+            return this.TIER;
         }else{
             return 0;
         }

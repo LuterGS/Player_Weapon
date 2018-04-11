@@ -5,14 +5,9 @@ public class Player_1st{
 
     protected Scanner scan = new Scanner(System.in);
     protected String name;
-    protected int HP;
-    protected int ATK;
-    protected int DEF;
-    protected int level;
-    protected int exp;
-    protected int HP_max;
+    protected double HP, ATK, DEF;
+    protected int HP_max, exp, exp_max, level;
     protected final int level_max = 30;
-    protected int exp_max;
     //이름, HP, MP, Level, exp 구현.
 
     protected Skill first = null;
@@ -32,14 +27,28 @@ public class Player_1st{
         this.level = 1;
         this.HP_max = 100;
         this.exp_max = 1000;
+
+        this.MyWeapon = new Weapon(0);
+        System.out.println("무기 획득, 무기 이름은 " + this.MyWeapon.get_name());
+        System.out.printf("공걱력 : %d, 방어력 : %d\n", this.MyWeapon.getValue(1),this.MyWeapon.getValue(2));
+
+        change_skill("Attack");
     }
     //기본 생성자, 1렙때 생성하면 이렇게 됨
 
+    public String getName(){
+        return this.name;
+    }
+
+    public double getHP(){
+        return this.HP;
+    }
+
     protected void level_up(){
-        this.exp_max += 50 * this.level;
+        this.exp_max += 100 * this.level;
         this.HP_max += 10 * this.level;
         this.ATK += 5 * this.level;
-        this.DEF += 5 * this.DEF;
+        this.DEF += 5 * this.level;
         this.level++;
         this.exp = 0;
         this.HP = this.HP_max;
@@ -61,58 +70,61 @@ public class Player_1st{
     }
 
     //무기 얻는 메소드
-    public void get_Weapon(int Tier) {
+    public void get_Weapon() {
 
-        this.MyWeapon = new Weapon();
-        System.out.println("무기 획득");
-        System.out.println("무기 이름은 " + this.MyWeapon.get_name());
-        System.out.printf("공걱력 : %d, 방어력 : %d\n", this.MyWeapon.getValue(1),this.MyWeapon.getValue(2));
+        int Tier = this.MyWeapon.getValue(3) + 1;
+        this.MyWeapon = new Weapon(Tier);
+        System.out.println("무기 획득, 무기 이름은 " + this.MyWeapon.get_name());
+        System.out.printf("공걱력 : %d, 방어력 : %d, 티어 : %d\n", this.MyWeapon.getValue(0),this.MyWeapon.getValue(1), this.MyWeapon.getValue(2));
     }
 
     //플레이어(this)가 몬스터(monster)를 공격하는 메서드
     //모든 공격들은 플레이어의 선공으로 시작된다고 생각하며 메서드 작성
-    public void attackMonster(Monster monster){
+    public double[] MyTurn(Monster monster){
 
-        String skillSet = this.first.getClass().getName();
-        // 현재 스킬셋이 Attack인지 Defense인지 저장한 변수
         int select;
-        Attack attack = new Attack();
-        Defense defense = new Defense();
+        double value[] = {this.ATK, this.DEF};
+        double output[] = new double[2];
+        //2개형 return, 첫번째는 공격력, 두번째는 방어력;
 
         System.out.println("몬스터를 공격합니다");
 
-        System.out.printf("현재 스킬셋은 %s입니다\n",skillSet);
+        if(this.first instanceof Attack){
+            System.out.println("현재 스킬셋은 Attack 입니다");
+        }else if(this.first instanceof Defense){
+            System.out.println("현재 스킬셋은 Defense 입니다");
+        }
+
         this.first.show_skill(); // 스킬셋의 스킬 목록을 출력해주는 함수
 
         System.out.println("사용할 스킬 숫자를 입력해주세요: ");
         select = scan.nextInt();
 
-        if(skillSet == "Attack"){
-            switch (select){
-                case 0:
-                    attack.false_Swipe(Player_1st player1, monster);
-                    break;
-                case 1:
-                    attack.double_Edge(Player_1st player1, monster);
-                    break;
-                case 2:
-                    attack.sword_Dance(Player_1st player1);
-                    break;
-            }
-        }else{
-            switch (select){
-                case 0:
-                    defense.runAway(Player_1st player1, monster);
-                    break;
-                case 1:
-                    defense.Harden(Player_1st player1, monster);
-                    break;
-                case 2:
-                    defense.defensive_wall(Player_1st player1, monster);
-                    break;
-            }
+        switch (select){
+            case 0:
+                output = this.first.Skill_1(this, monster, value);
+                break;
+            case 1:
+                output = this.first.Skill_2(this, monster, value);
+                break;
+            case 2:
+                output = this.first.Skill_3(this, monster, value);
+                break;
         }
+        return output;
+    }
 
+    public void attacked(double Damage){
+
+        if(Damage < 0){
+            System.out.printf("%s의 방어력이 높습니다! 데미지를 1만 받습니다. ", this.name);
+            Damage = 1;
+        }else{
+            System.out.printf("%s(이/가) 공격을 받았습니다! 받은 데미지 : %.1f, ", this.name, Damage);
+        }
+        System.out.printf("체력 %.1f에서 ", this.HP);
+        this.HP -= Damage;
+        System.out.printf("%.1f로 감소.\n", this.HP);
     }
 
 

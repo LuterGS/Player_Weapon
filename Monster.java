@@ -4,7 +4,7 @@ public class Monster {
 
     private Random random = new Random();
     private String name, type;
-    private int HP, ATK, DEF;
+    private double HP, ATK, DEF;
 
     public Monster(int player_level){
 
@@ -24,12 +24,53 @@ public class Monster {
         this.DEF = 20 + (player_level * (10 + random.nextInt(4) - 2));
     }
 
-    //몬스터(this)가 플레이어(player)를 공격하는 메서드
-    public void attackPlayer(Player_1st player){
-        System.out.println("플레이어를 공격합니다.");
-        System.out.printf("ATK: %d, DEF: %d로 공격\n", this.ATK, this.DEF);
-
-        int damage = player.DEF - this.ATK;
-        player.HP -= damage;
+    public String getName(){
+        return this.name;
     }
+
+    public double getHP(){
+        return this.HP;
+    }
+
+    public void getInfo(){
+
+        System.out.printf("몬스터 이름은 %s, 체력 : %.1f, 공격력 : %.1f, 방어력 %.1f\n", this.name, this.HP, this.ATK, this.DEF);
+    }
+
+    public void get_curinfo(){
+        System.out.printf("현재 몬스터의 체력 : %.1f, 공격력 : %.1f, 방어력 %.1f\n", this.HP, this.ATK, this.DEF);
+    }
+
+    public double[] get_info(){
+
+        double[] value = new double[2];
+        value[0] = this.ATK;
+        value[1] = this.DEF;
+        return value;
+    }
+
+    public void attacked(double Damage){
+
+        if(Damage < 0){
+            System.out.printf("%s의 방어력이 높습니다! 데미지를 1만 받습니다. ", this.name);
+            Damage = 1;
+        }else{
+            System.out.printf("%s(이/가) 공격을 받았습니다! 받은 데미지 : %.1f, ", this.name, Damage);
+        }
+        System.out.printf("체력 %.1f에서 ", this.HP);
+        this.HP -= Damage;
+        System.out.printf("%.1f로 감소.\n", this.HP);
+    }
+
+    public double get_HP(){
+        return this.HP;
+    }
+
+    public double get_ATK(){
+        return this.ATK;
+    }
+
+
+
+
 }
