@@ -90,25 +90,25 @@ public class Player_1st{
         if(skillSet == "Attack"){
             switch (select){
                 case 0:
-                    false_Swipe(Player_1st player1, monster);
+                    attack.false_Swipe(Player_1st player1, monster);
                     break;
                 case 1:
-                    double_Edge(Player_1st player1, monster);
+                    attack.double_Edge(Player_1st player1, monster);
                     break;
                 case 2:
-                    sword_Dance(Player_1st player1);
+                    attack.sword_Dance(Player_1st player1);
                     break;
             }
         }else{
             switch (select){
                 case 0:
-                    runAway(Player_1st player1, monster);
+                    defense.runAway(Player_1st player1, monster);
                     break;
                 case 1:
-                    Harden(Player_1st player1, monster);
+                    defense.Harden(Player_1st player1, monster);
                     break;
                 case 2:
-                    defensive_wall(Player_1st player1, monster);
+                    defense.defensive_wall(Player_1st player1, monster);
                     break;
             }
         }
