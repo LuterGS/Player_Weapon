@@ -51,8 +51,11 @@ public class Defense implements Skill {
     @Override
     public double[] Skill_3(Player_1st player1, Monster monster, double AD[]) {
 
-        System.out.printf("니 공격은 소용없다! 체력 %f만큼 회복\n", monster.get_ATK());
+        System.out.printf("니 공격은 소용없다! 체력 %.1f만큼 회복\n", monster.get_ATK());
         player1.HP += monster.get_ATK();
+        if(player1.HP >= player1.HP_max){
+            player1.HP = player1.HP_max;
+        }
         return AD;
     }
 

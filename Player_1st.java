@@ -23,15 +23,14 @@ public class Player_1st{
     Player_1st() {
         this.HP = 100;
         this.ATK = 50;
-        this.DEF = 50;
+        this.DEF = 20;
         this.level = 1;
         this.HP_max = 100;
         this.exp_max = 1000;
 
         this.MyWeapon = new Weapon(0);
         System.out.println("무기 획득, 무기 이름은 " + this.MyWeapon.get_name());
-        System.out.printf("공걱력 : %d, 방어력 : %d\n", this.MyWeapon.getValue(1),this.MyWeapon.getValue(2));
-
+        System.out.printf("공걱력 : %d, 방어력 : %d, 티어 : %d\n", this.MyWeapon.getValue(0),this.MyWeapon.getValue(1), this.MyWeapon.getValue(2));
         change_skill("Attack");
     }
     //기본 생성자, 1렙때 생성하면 이렇게 됨

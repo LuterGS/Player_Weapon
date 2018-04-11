@@ -16,6 +16,13 @@ public class Main {
 
                 //전투
                 Warrior = Events.combat(Warrior);
+                if(Warrior.getHP() <= 0){
+                    System.out.println("게임 패배!");
+                    break;
+                }else{
+                    Warrior.level_up();
+                }
+
             }else if(select >= 50 && select < 70){
 
                 //아무 일도 일어나지 않음

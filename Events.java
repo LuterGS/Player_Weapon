@@ -172,11 +172,11 @@ public class Events {
             System.out.printf("현재 턴에서의 %s의 체력 : %.1f 공격력 : %.1f, 방어력 : %.1f\n", MON.getName(), MON.get_HP(), monster_value[0], monster_value[1]);
 
             player1.attacked(monster_value[0] - player_value[1]);
-            MON.attacked(player_value[1] - monster_value[0]);
+            MON.attacked(player_value[0] - monster_value[1]);
 
-            if(player1.HP == 0){
+            if(player1.HP <= 0){
                 break;
-            }else if (MON.get_HP() == 0) {
+            }else if (MON.get_HP() <= 0) {
                 break;
             }
         }

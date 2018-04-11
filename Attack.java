@@ -54,8 +54,8 @@ public class Attack implements Skill {
         AD[0] *= 3;
 
         System.out.printf("체력이 %f 에서", player1.HP);
-        player1.HP *= (player_damage * 0.01);
-        System.out.printf(" %f로 감소했습니다. 총 %d퍼센트 감소.\n", player1.HP, player_damage);
+        player1.HP *= 1 - (player_damage * 0.01);
+        System.out.printf(" %.1f로 감소했습니다. 총 %.1f퍼센트 감소.\n", player1.HP, player_damage);
 
         return AD;
     }
