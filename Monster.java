@@ -23,4 +23,13 @@ public class Monster {
         this.ATK = 30 + (player_level * (10 + random.nextInt(4) - 2));
         this.DEF = 20 + (player_level * (10 + random.nextInt(4) - 2));
     }
+
+    //몬스터(this)가 플레이어(player)를 공격하는 메서드
+    public void attackPlayer(Player_1st player){
+        System.out.println("플레이어를 공격합니다.");
+        System.out.printf("ATK: %d, DEF: %d로 공격\n", this.ATK, this.DEF);
+
+        int damage = player.DEF - this.ATK;
+        player.HP -= damage;
+    }
 }
